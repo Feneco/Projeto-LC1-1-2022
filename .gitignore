@@ -1,1 +1,4 @@
+# Visual studio files
 .vscode/
+# backup files
+*~
