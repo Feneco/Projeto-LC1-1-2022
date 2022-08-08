@@ -48,7 +48,7 @@ permutations(h, sink(h)(i,n))
 %%%  lemma.  You also may need to apply the fact that
 %%%  permutations is an equivalence relation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% @QED sink_length proved by mauricioayalarincon on Wed, 27 Jul 2022 19:14:04 GMT
+% @QED sink_length proved by wagner on Mon, 08 Aug 2022 16:12:06 GMT
 sink_length : COROLLARY 
   FORALL (h,  (i : nat),  (n : nat |  n < length(h) AND n >= i)) : 
 length(sink(h)(i,n)) = length(h)
