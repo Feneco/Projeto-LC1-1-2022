@@ -95,7 +95,7 @@ heapify_permutes : LEMMA
 %%% for any permutation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% @QED heapify_length proved by mauricioayalarincon on Wed, 27 Jul 2022 19:18:40 GMT
+% @QED heapify_length proved by wagner on Mon, 08 Aug 2022 16:21:10 GMT
 heapify_length : COROLLARY
  FORALL (h, (i: below[floor(length(h)/2)])) : length(heapify(h)(i)) = length(h)
 
