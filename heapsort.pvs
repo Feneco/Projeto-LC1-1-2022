@@ -122,7 +122,7 @@ heapsort_aux_permutes : LEMMA
 %%% for any permutation.  Do not use induction. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% @QED heapsort_aux_length proved by thaynaradelima on Sat, 30 Jul 2022 19:58:51 GMT
+% @QED heapsort_aux_length proved by wagner on Mon, 08 Aug 2022 17:28:19 GMT
 heapsort_aux_length : LEMMA
   FORALL (h, (n: below[length(h)])) :
   	 length(heapsort_aux(h)(n)) = length(h)

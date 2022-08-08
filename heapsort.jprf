@@ -13015,7 +13015,7 @@
    "info": {
     "theory": "heapsort",
     "formula": "heapsort_aux_length",
-    "status": "unchecked",
+    "status": "proved",
     "prover": "PVS 7.1.0 (Allegro CL Enterprise Edition)",
     "shasum": "b243986eeec8b16a8bf5cd20e20822ebbf55ff9898d6d7f0d4d82b6f80df165b"
    },
@@ -13025,12 +13025,6 @@
     "name": "heapsort_aux_length",
     "type": "root",
     "rules": [
-     {
-      "branch": "",
-      "name": "(grind)",
-      "type": "proof-command",
-      "rules": []
-     },
      {
       "branch": "",
       "name": "(skeep)",
@@ -13051,7 +13045,19 @@
      },
      {
       "branch": "",
-      "name": "(rewrite \"fsq_permutations_length\")",
+      "name": "(lemma \"fsq_permutations_length\")",
+      "type": "proof-command",
+      "rules": []
+     },
+     {
+      "branch": "",
+      "name": "(inst?)",
+      "type": "proof-command",
+      "rules": []
+     },
+     {
+      "branch": "",
+      "name": "(prop)",
       "type": "proof-command",
       "rules": []
      },
@@ -13063,13 +13069,19 @@
      },
      {
       "branch": "",
-      "name": "(expand \"symmetric?\")",
+      "name": "(prop)",
       "type": "proof-command",
       "rules": []
      },
      {
       "branch": "",
-      "name": "(flatten)",
+      "name": "(hide -1 -3)",
+      "type": "proof-command",
+      "rules": []
+     },
+     {
+      "branch": "",
+      "name": "(expand \"symmetric?\")",
       "type": "proof-command",
       "rules": []
      },
