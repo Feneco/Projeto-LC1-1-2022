@@ -772,17 +772,81 @@
     (list type-decl nil list_adt nil)
     (perm_fsq_iff_perm_list formula-decl nil sorting_seq nil))
    shostak))
+ (occurences_len_0_implies_no_occurences 0
+  (occurences_len_0_implies_no_occurences-1 nil 3869868756
+   ("" (skeep)
+    (("" (expand "occurrences")
+      (("" (replace -1) (("" (propax) nil nil)) nil)) nil))
+    nil)
+   ((occurrences def-decl "nat" sorting_seq nil)) shostak))
  (fsq_permutations_length_by_induction 0
   (fsq_permutations_length_by_induction-1 nil 3868270510
    ("" (measure-induct+ "length(h1)" ("h1"))
-    (("" (inst?)
-      (("" (inst?)
-        (("" (skeep)
-          (("" (lemma fsq_permutations_length)
-            (("" (lemma same_occurrences_same_length)
-              (("" (inst?) (("" (prop) nil nil)) nil)) nil))
+    (("" (skeep)
+      (("" (case "length(x!1)=0")
+        (("1" (inst?)
+          (("1" (prop)
+            (("1" (hide 1)
+              (("1" (case "length(h2)=0")
+                (("1" (grind) nil nil)
+                 ("2" (expand "permutations")
+                  (("2" (expand "occurrences")
+                    (("2" (inst?)
+                      (("1" (lift-if)
+                        (("1" (lift-if)
+                          (("1" (lift-if)
+                            (("1" (assert)
+                              (("1"
+                                (expand "finseq_appl")
+                                (("1"
+                                  (prop)
+                                  (("1"
+                                    (expand "occurrences")
+                                    (("1"
+                                      (lift-if)
+                                      (("1"
+                                        (prop)
+                                        (("1"
+                                          (hide -2)
+                                          (("1"
+                                            (assert)
+                                            (("1"
+                                              (grind)
+                                              (("1"
+                                                (hide -1)
+                                                (("1"
+                                                  (postpone)
+                                                  nil
+                                                  nil))
+                                                nil)
+                                               ("2"
+                                                (postpone)
+                                                nil
+                                                nil))
+                                              nil))
+                                            nil))
+                                          nil)
+                                         ("2" (postpone) nil nil)
+                                         ("3" (postpone) nil nil))
+                                        nil))
+                                      nil))
+                                    nil)
+                                   ("2" (postpone) nil nil))
+                                  nil))
+                                nil))
+                              nil))
+                            nil))
+                          nil))
+                        nil)
+                       ("2" (postpone) nil nil))
+                      nil))
+                    nil))
+                  nil))
+                nil))
+              nil))
             nil))
-          nil))
+          nil)
+         ("2" (postpone) nil nil))
         nil))
       nil))
     nil)
