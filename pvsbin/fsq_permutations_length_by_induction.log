@@ -1,0 +1,47 @@
+sorting_seq.fsq_permutations_length_by_induction is UNPROVED.
+
+  fsq_permutations_length_by_induction depends on the following proved theorems:
+
+    bounded_nat_inductions.below_induction
+
+    list2finseq.finseq2list_length
+
+    measure_induction.measure_induction
+
+  fsq_permutations_length_by_induction depends on the following axioms:
+
+    naturalnumbers.wf_nat
+
+  fsq_permutations_length_by_induction depends on the following definitions:
+
+    sorting_seq.occurrences
+
+    sorting_seq.permutations
+
+    sorting_aux.occurrences
+
+    sorting_aux.permutations
+
+    finite_sequences.^
+
+    finite_sequences.empty_seq
+
+    finite_sequences.finseq_appl
+
+    list2finseq.finseq2list
+
+    list2finseq.finseq2list_rec
+
+    list_props.length
+
+    list_props.member
+
+    orders.well_founded?
+
+    real_defs.min
+
+    reals.<=
+
+    reals.>
+
+    reals.>=

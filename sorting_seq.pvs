@@ -87,12 +87,14 @@ fsq_permutations_length : COROLLARY  FORALL(h1,h2:finite_sequence[T]) :
 %%% for i=1 our i=2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% @QED occurences_len_0_implies_no_occurences proved by wagner on Fri, 19 Aug 2022 03:33:01 GMT
-occurences_len_0_implies_no_occurences : LEMMA 
-   FORALL(x:T, h1:finite_sequence[T]) : length(h1) = 0 => occurrences(h1)(x) = 0
+% @QED aaaa proved by wagner on Fri, 19 Aug 2022 06:05:10 GMT
+aaaa : LEMMA
+   FORALL(h1, h2:finite_sequence[T]) :
+   (length(h1)=0 AND (permutations(h1,h2) OR permutations(h2,h1))) => length(h2) = 0
 
-% @QED fsq_permutations_length_by_induction proved by wagner on Fri, 05 Aug 2022 18:50:57 GMT
-fsq_permutations_length_by_induction : CONJECTURE FORALL(h1,h2:finite_sequence[T]) : 
+
+fsq_permutations_length_by_induction : CONJECTURE 
+   FORALL(h1,h2:finite_sequence[T]) : 
    permutations(h1,h2) => length(h1) = length(h2)
 
 

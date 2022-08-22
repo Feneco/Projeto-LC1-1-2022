@@ -1,0 +1,1 @@
+("sorting_seq" sorting_seq occurences_len_0_implies_no_occurences 0 (occurences_len_0_implies_no_occurences-1 nil 3869868756 ("" (skeep) (("" (expand "occurrences") (("" (replace -1) (("" (propax) nil nil)) nil)) nil)) nil) ((occurrences def-decl "nat" sorting_seq nil)) shostak))

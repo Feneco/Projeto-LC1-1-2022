@@ -1,0 +1,5 @@
+fsq_permutations_length_by_induction :
+
+{-1}   permutations(h1, h2)
+  ├─────── 
+{1}   length(h1) = length(h2)

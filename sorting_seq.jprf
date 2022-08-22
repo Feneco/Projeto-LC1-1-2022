@@ -10575,7 +10575,7 @@
     "formula": "fsq_permutations_length_by_induction",
     "status": "unchecked",
     "prover": "PVS 7.1.0 (Allegro CL Enterprise Edition)",
-    "shasum": "d409e7c9f5481c6c89929fd45eccde511b0a71e7a5a8442b8687243468feb71a"
+    "shasum": "440fb798490ec026b2e90fd086796fd73eb88477703af309301beeb45131d833"
    },
    "origin": ".prf",
    "proofTree": {
@@ -10597,7 +10597,13 @@
      },
      {
       "branch": "",
-      "name": "(case \"length(x!1)=0\")",
+      "name": "(grind)",
+      "type": "proof-command",
+      "rules": []
+     },
+     {
+      "branch": "",
+      "name": "(case \"length(x!1) = 0\")",
       "type": "proof-command",
       "rules": [
        {
@@ -10607,25 +10613,7 @@
         "rules": [
          {
           "branch": "1",
-          "name": "(inst?)",
-          "type": "proof-command",
-          "rules": []
-         },
-         {
-          "branch": "1",
-          "name": "(prop)",
-          "type": "proof-command",
-          "rules": []
-         },
-         {
-          "branch": "1",
-          "name": "(hide 1)",
-          "type": "proof-command",
-          "rules": []
-         },
-         {
-          "branch": "1",
-          "name": "(case \"length(h2)=0\")",
+          "name": "(case \"length(h2) = 0\")",
           "type": "proof-command",
           "rules": [
            {
@@ -10635,7 +10623,13 @@
             "rules": [
              {
               "branch": "1.1",
-              "name": "(grind)",
+              "name": "(replace -1)",
+              "type": "proof-command",
+              "rules": []
+             },
+             {
+              "branch": "1.1",
+              "name": "(propax)",
               "type": "proof-command",
               "rules": []
              }
@@ -10648,13 +10642,13 @@
             "rules": [
              {
               "branch": "1.2",
-              "name": "(expand \"permutations\")",
+              "name": "(lemma \"aaaa\")",
               "type": "proof-command",
               "rules": []
              },
              {
               "branch": "1.2",
-              "name": "(expand \"occurrences\")",
+              "name": "(expand \"permutations\")",
               "type": "proof-command",
               "rules": []
              },
@@ -10662,123 +10656,13 @@
               "branch": "1.2",
               "name": "(inst?)",
               "type": "proof-command",
-              "rules": [
-               {
-                "branch": "1.2.1",
-                "name": "(1.2.1)",
-                "type": "proof-branch",
-                "rules": [
-                 {
-                  "branch": "1.2.1",
-                  "name": "(lift-if)",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "1.2.1",
-                  "name": "(lift-if)",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "1.2.1",
-                  "name": "(lift-if)",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "1.2.1",
-                  "name": "(assert)",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "1.2.1",
-                  "name": "(expand \"finseq_appl\")",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "1.2.1",
-                  "name": "(prop)",
-                  "type": "proof-command",
-                  "rules": [
-                   {
-                    "branch": "1.2.1.1",
-                    "name": "(1.2.1.1)",
-                    "type": "proof-branch",
-                    "rules": [
-                     {
-                      "branch": "1.2.1.1",
-                      "name": "(expand \"occurrences\")",
-                      "type": "proof-command",
-                      "rules": []
-                     },
-                     {
-                      "branch": "1.2.1.1",
-                      "name": "(lift-if)",
-                      "type": "proof-command",
-                      "rules": []
-                     },
-                     {
-                      "branch": "1.2.1.1",
-                      "name": "(prop)",
-                      "type": "proof-command",
-                      "rules": [
-                       {
-                        "branch": "1.2.1.1.1",
-                        "name": "(1.2.1.1.1)",
-                        "type": "proof-branch",
-                        "rules": [
-                         {
-                          "branch": "1.2.1.1.1",
-                          "name": "(hide -2)",
-                          "type": "proof-command",
-                          "rules": []
-                         },
-                         {
-                          "branch": "1.2.1.1.1",
-                          "name": "(assert)",
-                          "type": "proof-command",
-                          "rules": []
-                         },
-                         {
-                          "branch": "1.2.1.1.1",
-                          "name": "(grind)",
-                          "type": "proof-command",
-                          "rules": [
-                           {
-                            "branch": "1.2.1.1.1.1",
-                            "name": "(1.2.1.1.1.1)",
-                            "type": "proof-branch",
-                            "rules": [
-                             {
-                              "branch": "1.2.1.1.1.1",
-                              "name": "(hide -1)",
-                              "type": "proof-command",
-                              "rules": []
-                             },
-                             {
-                              "branch": "1.2.1.1.1.1",
-                              "name": "(grind)",
-                              "type": "proof-command",
-                              "rules": []
-                             }
-                            ]
-                           }
-                          ]
-                         }
-                        ]
-                       }
-                      ]
-                     }
-                    ]
-                   }
-                  ]
-                 }
-                ]
-               }
-              ]
+              "rules": []
+             },
+             {
+              "branch": "1.2",
+              "name": "(prop)",
+              "type": "proof-command",
+              "rules": []
              }
             ]
            }
@@ -10793,9 +10677,121 @@
         "rules": [
          {
           "branch": "2",
-          "name": "(postpone)",
+          "name": "(hide 2)",
           "type": "proof-command",
           "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(case \"length(h2) = 0\")",
+          "type": "proof-command",
+          "rules": [
+           {
+            "branch": "2.1",
+            "name": "(2.1)",
+            "type": "proof-branch",
+            "rules": [
+             {
+              "branch": "2.1",
+              "name": "(expand \"occurrences\")",
+              "type": "proof-command",
+              "rules": []
+             },
+             {
+              "branch": "2.1",
+              "name": "(inst?)",
+              "type": "proof-command",
+              "rules": [
+               {
+                "branch": "2.1.1",
+                "name": "(2.1.1)",
+                "type": "proof-branch",
+                "rules": [
+                 {
+                  "branch": "2.1.1",
+                  "name": "(replace -1)",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "2.1.1",
+                  "name": "(expand \"finseq_appl\")",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "2.1.1",
+                  "name": "(case \"length(x!1) = 0\")",
+                  "type": "proof-command",
+                  "rules": [
+                   {
+                    "branch": "2.1.1.1",
+                    "name": "(2.1.1.1)",
+                    "type": "proof-branch",
+                    "rules": [
+                     {
+                      "branch": "2.1.1.1",
+                      "name": "(propax)",
+                      "type": "proof-command",
+                      "rules": []
+                     }
+                    ]
+                   },
+                   {
+                    "branch": "2.1.1.2",
+                    "name": "(2.1.1.2)",
+                    "type": "proof-branch",
+                    "rules": [
+                     {
+                      "branch": "2.1.1.2",
+                      "name": "(case \"length(x!1) = 0\")",
+                      "type": "proof-command",
+                      "rules": [
+                       {
+                        "branch": "2.1.1.2.1",
+                        "name": "(2.1.1.2.1)",
+                        "type": "proof-branch",
+                        "rules": [
+                         {
+                          "branch": "2.1.1.2.1",
+                          "name": "(propax)",
+                          "type": "proof-command",
+                          "rules": []
+                         }
+                        ]
+                       },
+                       {
+                        "branch": "2.1.1.2.2",
+                        "name": "(2.1.1.2.2)",
+                        "type": "proof-branch",
+                        "rules": []
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "branch": "2.2",
+            "name": "(2.2)",
+            "type": "proof-branch",
+            "rules": [
+             {
+              "branch": "2.2",
+              "name": "(postpone)",
+              "type": "proof-command",
+              "rules": []
+             }
+            ]
+           }
+          ]
          }
         ]
        }
@@ -10919,6 +10915,130 @@
       "name": "(propax)",
       "type": "proof-command",
       "rules": []
+     }
+    ]
+   }
+  }
+ ],
+ "sorting_seq.aaaa": [
+  {
+   "info": {
+    "theory": "sorting_seq",
+    "formula": "aaaa",
+    "status": "proved",
+    "prover": "PVS 7.1.0 (Allegro CL Enterprise Edition)",
+    "shasum": "440fb798490ec026b2e90fd086796fd73eb88477703af309301beeb45131d833"
+   },
+   "origin": ".prf",
+   "proofTree": {
+    "branch": "",
+    "name": "aaaa",
+    "type": "root",
+    "rules": [
+     {
+      "branch": "",
+      "name": "(skeep)",
+      "type": "proof-command",
+      "rules": []
+     },
+     {
+      "branch": "",
+      "name": "(prop)",
+      "type": "proof-command",
+      "rules": [
+       {
+        "branch": "1",
+        "name": "(1)",
+        "type": "proof-branch",
+        "rules": [
+         {
+          "branch": "1",
+          "name": "(expand \"permutations\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(expand \"occurrences\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(expand \"finseq_appl\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(assert)",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(inst?)",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(replaces)",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "1",
+          "name": "(assert)",
+          "type": "proof-command",
+          "rules": []
+         }
+        ]
+       },
+       {
+        "branch": "2",
+        "name": "(2)",
+        "type": "proof-branch",
+        "rules": [
+         {
+          "branch": "2",
+          "name": "(expand \"permutations\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(expand \"occurrences\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(expand \"finseq_appl\")",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(assert)",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(inst?)",
+          "type": "proof-command",
+          "rules": []
+         },
+         {
+          "branch": "2",
+          "name": "(assert)",
+          "type": "proof-command",
+          "rules": []
+         }
+        ]
+       }
+      ]
      }
     ]
    }
