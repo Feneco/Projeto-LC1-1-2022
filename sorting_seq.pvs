@@ -28,19 +28,19 @@ i,j : VAR nat
 %% Permutations check whether two finite sequences are permutations
 %% preserving occurrences of each key.
 occurrences(h)(x:T): RECURSIVE nat =
-   IF  length(h) = 0 THEN 
-      0
-   ELSIF h(0) = x THEN 
-      1 + occurrences(h^(1,length(h)-1))(x)
-   ELSE
-	   occurrences(h^(1,length(h)-1))(x)
+IF  length(h) = 0 THEN 0
+    ELSIF 
+      h(0) = x THEN 1 + occurrences(h^(1,length(h)-1))(x)
+      ELSE
+	occurrences(h^(1,length(h)-1))(x)
 	ENDIF
 MEASURE length(h)
 
 finseq2list_rec_equivalence: LEMMA
-      FORALL(i,k: below[length(h)]): i <= length(h) - k 
-      IMPLIES finseq2list_rec(h^(k, h`length - 1), i) = finseq2list_rec(h, i) 
-
+FORALL(i,k: below[length(h)]): 
+     i <= length(h) - k IMPLIES
+     finseq2list_rec(h^(k, h`length - 1), i) =
+     			   finseq2list_rec(h, i) 
 % Not used
 finseq2lists_for_suffixes : COROLLARY 
 FORALL ((h | length(h) > 0), i : below[length(h)]) :
@@ -58,11 +58,7 @@ FORALL(h, (x :T)) : occurrences(h)(x) = occurrences(finseq2list(h))(x)
 permutations(h1,h2:finite_sequence[T]):bool =
  FORALL (x:T): occurrences(h1)(x) = occurrences(h2)(x)
 
-%% Permutations is an equivalence relation on finite sequences.
-permutations_equiv :  LEMMA 
-reflexive?(permutations)  AND 
-symmetric?(permutations) AND 
-transitive?(permutations)
+
 
 %% Permutations relation in finite sequences and their 
 %% corresponding lists coincide.
@@ -81,8 +77,15 @@ perm_fsq_iff_perm_list : LEMMA  FORALL(h1,h2:finite_sequence[T]) :
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % @QED fsq_permutations_length proved by thaynaradelima on Sat, 30 Jul 2022 16:28:00 GMT
-fsq_permutations_length : COROLLARY FORALL(h1,h2:finite_sequence[T]) : 
+fsq_permutations_length : COROLLARY  FORALL(h1,h2:finite_sequence[T]) : 
    permutations(h1,h2) => length(h1) = length(h2)
+
+%% Permutations is an equivalence relation on finite sequences.
+% @QED permutations_equiv proved by mauricioayalarincon on Wed, 24 Aug 2022 20:37:04 GMT
+permutations_equiv :  LEMMA 
+reflexive?(permutations)  AND 
+symmetric?(permutations) AND 
+transitive?(permutations)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  QUESTION 01
@@ -93,22 +96,23 @@ fsq_permutations_length : COROLLARY FORALL(h1,h2:finite_sequence[T]) :
 %%% for i=1 our i=2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% @QED aaaa proved by wagner on Wed, 24 Aug 2022 03:21:08 GMT
-aaaa: LEMMA FORALL(h1,h2:finite_sequence[T]) : 
-   (length(h1)=0 AND length(h2)=0) => permutations(h1, h2)
+% @QED aaaa proved by wagner on Fri, 19 Aug 2022 06:05:10 GMT
+% @QED fsq_empty_permutations proved by mauricioayalarincon on Wed, 24 Aug 2022 20:30:33 GMT
+fsq_empty_permutations : LEMMA
+   FORALL(h1, h2:finite_sequence[T]) :
+   (length(h1)=0 AND permutations(h1,h2)) => length(h2) = 0
 
-% @QED bbbb proved by wagner on Wed, 24 Aug 2022 03:36:48 GMT
-bbbb: LEMMA FORALL(h1, h2:finite_sequence[T]) :
-   (length(h1)=0 AND permutations(h1, h2)) => length(h2)=0
+fsq_move_to_head : CONJECTURE 
+  FORALL(h:finite_sequence[T], i :below[length(h)]) :
+     permutations(h, add_first(h(i), delete(h,i)))
 
-cccc: LEMMA FORALL(h1, h2:finite_sequence[T]) :
-   (length(h2)=0 AND permutations(h1, h2)) => length(h1)=0
-
+fsq_member_index : CONJECTURE
+  FORALL(x,h:finite_sequence[T], i:below[length(x)]) :
+  permutations(x,h) => EXISTS (j:below[length(h)]) : h(j) = x(i)
 
 fsq_permutations_length_by_induction : CONJECTURE 
    FORALL(h1,h2:finite_sequence[T]) : 
    permutations(h1,h2) => length(h1) = length(h2)
-
 
 % Boolean for partially and fully sorted heaps
 psorted(h)(i : below[length(h)] , ( j : below[length(h)] | i <= j)) : bool =
