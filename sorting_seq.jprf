@@ -10817,6 +10817,18 @@
                       "name": "(typepred \"j\")",
                       "type": "proof-command",
                       "rules": []
+                     },
+                     {
+                      "branch": "3.1.1.2",
+                      "name": "(expand \"delete\")",
+                      "type": "proof-command",
+                      "rules": []
+                     },
+                     {
+                      "branch": "3.1.1.2",
+                      "name": "(propax)",
+                      "type": "proof-command",
+                      "rules": []
                      }
                     ]
                    }
@@ -10828,7 +10840,60 @@
                 "branch": "3.1.2",
                 "name": "(3.1.2)",
                 "type": "proof-branch",
-                "rules": []
+                "rules": [
+                 {
+                  "branch": "3.1.2",
+                  "name": "(lemma \"fsq_member_index\")",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "3.1.2",
+                  "name": "(inst?)",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "3.1.2",
+                  "name": "(expand \"finseq_appl\")",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "3.1.2",
+                  "name": "(inst?)",
+                  "type": "proof-command",
+                  "rules": [
+                   {
+                    "branch": "3.1.2.1",
+                    "name": "(3.1.2.1)",
+                    "type": "proof-branch",
+                    "rules": [
+                     {
+                      "branch": "3.1.2.1",
+                      "name": "(prop)",
+                      "type": "proof-command",
+                      "rules": [
+                       {
+                        "branch": "3.1.2.1.1",
+                        "name": "(3.1.2.1.1)",
+                        "type": "proof-branch",
+                        "rules": [
+                         {
+                          "branch": "3.1.2.1.1",
+                          "name": "(skosimp*)",
+                          "type": "proof-command",
+                          "rules": []
+                         }
+                        ]
+                       }
+                      ]
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ]
                },
                {
                 "branch": "3.1.3",

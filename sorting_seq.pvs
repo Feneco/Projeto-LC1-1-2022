@@ -87,15 +87,6 @@ reflexive?(permutations)  AND
 symmetric?(permutations) AND
 transitive?(permutations)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  QUESTION 01
-%%%  Formalise DIRECTLY BY INDUCTION the fact that finite sequence
-%%%  permutations have the same length.
-%%% You will need to apply the proof command measure-induct+ on the
-%%% length of either h1 or h2: (measure-induct+ "length(hi)" ("hi")),
-%%% for i=1 our i=2.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % @QED fsq_empty_permutations proved by mauricioayalarincon on Wed, 24 Aug 2022 20:30:33 GMT
 fsq_empty_permutations : LEMMA
    FORALL(h1, h2:finite_sequence[T]) :
@@ -108,6 +99,15 @@ fsq_move_to_head : CONJECTURE
 fsq_member_index : CONJECTURE
   FORALL(x,h:finite_sequence[T], i:below[length(x)]) :
   permutations(x,h) => EXISTS (j:below[length(h)]) : h(j) = x(i)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  QUESTION 01
+%%%  Formalise DIRECTLY BY INDUCTION the fact that finite sequence
+%%%  permutations have the same length.
+%%% You will need to apply the proof command measure-induct+ on the
+%%% length of either h1 or h2: (measure-induct+ "length(hi)" ("hi")),
+%%% for i=1 our i=2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fsq_permutations_length_by_induction : CONJECTURE
    FORALL(h1,h2:finite_sequence[T]) :
