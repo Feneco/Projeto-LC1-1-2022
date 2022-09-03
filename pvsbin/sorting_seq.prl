@@ -1,0 +1,24 @@
+%-------------------------------------------
+% @formula: fsq_permutations_length_by_induction 
+% @theory: sorting_seq
+% @pvsfile: sorting_seq.pvs
+% @status: ❄️ unchecked
+%-------------------------------------------
+fsq_permutations_length_by_induction : PROOF
+(then (measure-induct+ "length(h1)" ("h1"))(skeep)(lemma "fsq_empty_permutations")(copy -1)(inst?)(inst -2 "h2" "x!1")
+  (spread (prop)
+   ((then (hide -3)(assert))
+    (then (lemma "permutations_equiv")(expand "symmetric?")(flatten)(inst?)(assert))
+    (then (lemma "fsq_member_index")
+     (spread (inst -1 "x!1" "h2" "0")
+      ((then (assert)(skeep)(expand "finseq_appl")(lemma "fsq_move_to_head")(inst -1 "h2" "j")(expand "finseq_appl")(inst -3 "rest(x!1)" "delete(h2,j)")
+        (spread (prop)
+         ((then (lemma "seq_first_rest")(inst?)(assert)(replace -1 3)
+           (spread (case "length(delete(h2,j)) = length(h2) -1")
+            ((then (hide -4 -6 -5)(grind))
+             (then (hide-all-but (1 2))(typepred "j")(expand "delete")(propax)))))
+          (then (postpone))
+          (then (hide - 2 4)(grind)))))
+       (then (hide-all-but (1 3))(grind)))))
+    (then (hide -1 2 3)(lemma "permutations_equiv")(expand "symmetric?")(flatten)(inst?)(assert)))))
+QED fsq_permutations_length_by_induction

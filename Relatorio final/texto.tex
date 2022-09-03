@@ -1,0 +1,62 @@
+\chapter{Introdução e contextualização do problema}
+
+Algoritmo é o conceito mais importante na ciência da computação. A criação deles é essencial para todo tipo de solução de problema, automação, análise e captura de dados, comunicação e quase tudo relacionado com computação.
+
+Entretanto a criação de algoritmos ficam a cargo de um ou mais programadores que podem introduzir erros, não detectar casos periféricos, ou até mesmo durante a fase de execução de código descobrir que a própria linguagem de programação utilizada introduz erros que não poderiam ter sido previstos.
+
+Por isso que existem testes de unidade e integração. Ambos servem para detectar erros no código fonte que foram introduzidos pelo programador. Infelizmente o teste de unidade depende da criação de casos de teste pelo próprio programador. Apesar disto não impedir o aumento da confiabilidade do código, testes de unidade são limitados á linguagem de programação que foi utilizado e da capacidade do programador de adiar possíveis casos onde o algoritmo escrito pode falhar. Outro problema se revela quando é utilizado funções, métodos ou API de outras fontes, tornando necessário que se confie na ausência de falhas e dos testes dos algoritmos escritos por terceiros.
+
+Portanto há a necessidade de verificação de algoritmos de forma universal, não apenas em uma só linguagem ou repositório de código, mas sim no contexto matemático de verificação, explorando lógica dedutiva para chegar na formalização de algoritmos sem ter que analisar exaustivamente de forma limitada ou finita (como no caso de testes de unidade) o código.
+
+Portanto há diversos provadores lógicos para verificação, como o PVS (\textit{Prototype Verification System}) que é usado neste projeto.
+
+\section{Formalização do algoritmo de ordenação Heapsort}
+
+Neste trabalho será provado, através do PVS, o correto funcionamento do Heapsort. Com esta prova podemos implicar que se for escrito o algoritmo em qualquer linguagem de programação (desde que seja idêntico ao utilizado neste projeto), ele irá funcionar com garantia lógica.
+
+\section{Explicação das técnicas de solução}
+
+É importante notar que o PVS implementa lógica de sequente de Gentzen dentro de um ambiente de prova iterativo de forma indireta através de comandos de prova, notando que muitos desses comandos  executam de forma automática as regras do sequente.
+
+
+
+\chapter{Especificação do problema e explicação do método de solução}
+
+Há dois arquivos na prova do heapsort: o \textit{heapsort.pvs} e o \textit{sorting\_seq.pvs}.
+
+O arquivo \textit{heapsort.pvs} contêm o algoritmo de ordenação divido em várias partes. Cada parte é provada separadamente e apenas no final do arquivo é provado o algoritmo de forma universal.
+
+O arquivo \textit{sorting\_seq.pvs} tem diversas funções para verificação de estados de lista como encontrar a quantidade de ocorrências de um item em uma lista, descobrir se uma lista é uma permutação de outra ou se a lista está ordenada. Este arquivo também tem vários teoremas e corolários utilizados nas provas do arquivo \textit{heapsort.pvs}.
+
+\section{Provando heapsort}
+
+O teorema \textit{heapsort\_works} é definido da seguinte forma:
+
+\begin{verbatim}
+heapsort\_works : THEOREM 
+FORALL (h) : is\_sorted?(heapsort(h)) AND permutations(h, heapsort(h))
+\end{verbatim}
+
+A função acima descreve que para toda lista finita h (O tipo de h é definido no começo do arquivo pvs, não necessitando a explicitação do tipo no teorema) heapsort retorna uma lista ordenada e que a lista que ele retorna é uma permutação de h, sem perder dados.
+
+A função \textit{permutations(h1, h2)} (onde h1 e h2 são do tipo lista finita) é definida em \textit{sorting\_seq.pvs} e retorna TRUE caso a lista h1 seja uma permutação de h2. 
+
+Podemos deduzir que tal essa função tem algumas propriedades:
+
+\begin{enumerate}
+    \item \label{lemma2} Caso \textit{permutations(h1, h2)} seja verdadeiro, o tamanho de h1 deve ser o mesmo que o tamanho de h2, já que ambas listas são essencialmente as mesmas apenas com os lugares trocados;
+    \item \label{reflex} Reflexividade. \textit{permutations(h1, h2)} deve retornar o mesmo valor caso o parâmetro passado seja trocado de lugar: \textit{permutations(h2, h1)};
+    \item \label{symetry} Propriedade simétrica: \textit{permutations(h1, h1)} será sempre verdadeiro para qualquer h1;
+    \item \label{trans} Propriedade transitiva: se \textit{permutations(h1, h2)} for verdadeiro e \textit{permutations(h2, h3)} também, \textit{permutations(h1, h3)} será verdadeiro.
+\end{enumerate}
+
+Todas as propriedades acima foram provadas em Corolários e Lemas. A propriedade \ref{lemma2} pode ser provado utilizando tanto uma prova sequencial como uma prova indutiva no comprimento da lista. 
+
+As propriedades de reflexividade, simetria e transitividade foram concatenadas em apenas uma prova: \textit{permutations\_equiv}.
+
+A função is\_sorted? por outro lado é definida e provada na biblioteca NASALib, que também serve de fonte de lemas, teoremas e corolários.
+
+A prova de \textit{heapsort\_works} utiliza vários lemmas de ambas fontes e principalmente de provas das sub-funções do heapsort. Todas estas provas de propriedades facilitam a formalização de heapsort quando necessário através do corte e aplicação de regras proposicionais.
+
+
+\section{Descrição da formalização}

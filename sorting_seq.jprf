@@ -1018,7 +1018,7 @@
     "formula": "fsq_permutations_length",
     "status": "proved",
     "prover": "PVS 7.1.0 (Allegro CL Enterprise Edition)",
-    "shasum": "7f33f8b79cf59bce70dd17fa2f3b0670e563d5c17f2b019c519bc0ca8650287d"
+    "shasum": "05acd48f02206d02c2f6a2ef5303f96bd7fc9cbff5a1a37880f1d590bb4991b1"
    },
    "origin": ".prf",
    "proofTree": {
@@ -10843,7 +10843,13 @@
                 "rules": [
                  {
                   "branch": "3.1.2",
-                  "name": "(lemma \"fsq_member_index\")",
+                  "name": "(rewrite \"permutations\")",
+                  "type": "proof-command",
+                  "rules": []
+                 },
+                 {
+                  "branch": "3.1.2",
+                  "name": "(rewrite \"permutations\")",
                   "type": "proof-command",
                   "rules": []
                  },
@@ -10855,13 +10861,7 @@
                  },
                  {
                   "branch": "3.1.2",
-                  "name": "(expand \"finseq_appl\")",
-                  "type": "proof-command",
-                  "rules": []
-                 },
-                 {
-                  "branch": "3.1.2",
-                  "name": "(inst?)",
+                  "name": "(case \"x!1 = add_first(h2`seq(j), delete(h2, j))\")",
                   "type": "proof-command",
                   "rules": [
                    {
@@ -10871,23 +10871,15 @@
                     "rules": [
                      {
                       "branch": "3.1.2.1",
-                      "name": "(prop)",
+                      "name": "(replace -1)",
                       "type": "proof-command",
-                      "rules": [
-                       {
-                        "branch": "3.1.2.1.1",
-                        "name": "(3.1.2.1.1)",
-                        "type": "proof-branch",
-                        "rules": [
-                         {
-                          "branch": "3.1.2.1.1",
-                          "name": "(skosimp*)",
-                          "type": "proof-command",
-                          "rules": []
-                         }
-                        ]
-                       }
-                      ]
+                      "rules": []
+                     },
+                     {
+                      "branch": "3.1.2.1",
+                      "name": "(assert)",
+                      "type": "proof-command",
+                      "rules": []
                      }
                     ]
                    }

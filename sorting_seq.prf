@@ -936,33 +936,7 @@
                                           nil))
                                         nil))
                                       nil)
-                                     ("2"
-                                      (lemma "fsq_member_index")
-                                      (("2"
-                                        (inst?)
-                                        (("2"
-                                          (expand "finseq_appl")
-                                          (("2"
-                                            (inst?)
-                                            (("1"
-                                              (prop)
-                                              (("1"
-                                                (skosimp*)
-                                                (("1"
-                                                  (postpone)
-                                                  nil
-                                                  nil))
-                                                nil)
-                                               ("2"
-                                                (postpone)
-                                                nil
-                                                nil))
-                                              nil)
-                                             ("2" (postpone) nil nil))
-                                            nil))
-                                          nil))
-                                        nil))
-                                      nil)
+                                     ("2" (postpone) nil nil)
                                      ("3"
                                       (hide - 2 4)
                                       (("3" (grind) nil nil))
