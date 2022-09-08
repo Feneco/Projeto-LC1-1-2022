@@ -1,3 +1,4 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introdução e contextualização do problema}
 
 Algoritmo é o conceito mais importante na ciência da computação. A criação deles é essencial para todo tipo de solução de problema, automação, análise e captura de dados, comunicação e quase tudo relacionado com computação.
@@ -14,21 +15,69 @@ Portanto há diversos provadores lógicos para verificação, como o PVS (\texti
 
 Neste trabalho será provado, através do PVS, o correto funcionamento do Heapsort. Com esta prova podemos implicar que se for escrito o algoritmo em qualquer linguagem de programação (desde que seja idêntico ao utilizado neste projeto), ele irá funcionar com garantia lógica.
 
-\section{Explicação das técnicas de solução}
 
-É importante notar que o PVS implementa lógica de sequente de Gentzen dentro de um ambiente de prova iterativo de forma indireta através de comandos de prova, notando que muitos desses comandos  executam de forma automática as regras do sequente.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Explicação das técnicas de solução}
+
+É importante notar que o PVS implementa lógica de sequente de Gentzen dentro de um ambiente de prova iterativo de forma indireta através de comandos de prova, notando que muitos desses comandos  executam de forma automática as regras do sequente. São utilizadas também induções estruturais e matemáticas em muitas das provas.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Especificação do problema e explicação do método de solução}
+
+\section{Heapsort}
+
+O algoritmo heapsort é um algoritmo de ordenação que usa árvores binárias em heap para recursivamente ordenar items de uma lista. Portanto há dois passos no algoritmo:
+
+\begin{enumerate}
+    \item Heapify: Transformar a lista recebida em uma arvore binária e então criar um heap a partir disso;
+    \item Ordenar: Criar uma lista ordenada a partir do heap criado
+\end{enumerate}
+
+\subsection{Heap}
+
+O heap é uma arvore binária em que todos os nós estão em uma lista, ou seja, cada item da lista representa um nó. Sabendo o valor do índice de um elemento da lista, suponhamos $i$, podemos descobrir os galhos dele com as seguintes equações:
+
+\begin{gather}
+\begin{align}
+indiceFilho_{esquerdo} &= 2*i+1 \\
+indiceFilho_{direito}  &= 2*i+2
+\end{align}
+\end{gather}
+
+E para encontrar qual é o índice do pai de um nó, a seguinte equação é usada:
+
+\begin{gather}
+\begin{align}
+indice_{pai} = floor(\frac{i-1}{2})
+\end{align}
+\end{gather}
+
+O heap é vantajoso pois não necessita um tipo de dados de árvore binária e conforme veremos a seguir, facilita a ordenação no heapsort.
+    
+\subsection{Algoritmo}
+
+Com o mapeamento de lista em arvore binária podemos descrever o algoritmo de ordenamento.
+
+\begin{enumerate}
+    \item Heapify: Faz com que a heap siga a propriedade max heap ao chamar sink em todos os elementos. Só é chamado uma vez, no início do algoritmo. Max heap é uma propriedade onde o valor das chaves dos nós devem ser sempre maiores que dos galhos;
+    \item Trocar de lugar o primeiro item do heap com o último usando a função swap. Isto é feito devido a uma consequência do max heap: O valor do nó raiz é sempre maior do que de todos os outros nós. Como no heap a raiz é sempre o primeiro item da lista, então a troca garante que o último item da lista esteja em ordem;
+    \item Já que o último item da lista já está pronto, os passos a seguir devem ignorá-lo, reduzindo o tamanho da lista trabalhada. Portanto todas as funções que trabalham com lista no projeto tem um parâmetro de comprimento, que é reduzido em 1 neste passo;
+    \item Executar a função sink com a lista reduzida do passo anterior.Sink leva ao primeiro item da lista o maior valor remanescente  mantendo max heap;
+    \item Executar o item 2. No entanto se a lista só estiver com 1 elemento o algoritmo deve parar.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Descrição da formalização}
+
+\section{Provando heapsort}
 
 Há dois arquivos na prova do heapsort: o \textit{heapsort.pvs} e o \textit{sorting\_seq.pvs}.
 
 O arquivo \textit{heapsort.pvs} contêm o algoritmo de ordenação divido em várias partes. Cada parte é provada separadamente e apenas no final do arquivo é provado o algoritmo de forma universal.
 
 O arquivo \textit{sorting\_seq.pvs} tem diversas funções para verificação de estados de lista como encontrar a quantidade de ocorrências de um item em uma lista, descobrir se uma lista é uma permutação de outra ou se a lista está ordenada. Este arquivo também tem vários teoremas e corolários utilizados nas provas do arquivo \textit{heapsort.pvs}.
-
-\section{Provando heapsort}
 
 O teorema \textit{heapsort\_works} é definido da seguinte forma:
 
@@ -58,5 +107,5 @@ A função is\_sorted? por outro lado é definida e provada na biblioteca NASALi
 
 A prova de \textit{heapsort\_works} utiliza vários lemmas de ambas fontes e principalmente de provas das sub-funções do heapsort. Todas estas provas de propriedades facilitam a formalização de heapsort quando necessário através do corte e aplicação de regras proposicionais.
 
-
-\section{Descrição da formalização}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusões}
