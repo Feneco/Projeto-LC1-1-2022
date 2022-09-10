@@ -1,4 +1,10 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Prefácio}
+
+Todo o código do projeto, incluindo \LaTeX os arquivos desse pdf estão no github através do link: \url{https://github.com/Feneco/Projeto-LC1-1-2022}
+
+\phantompart
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introdução e contextualização do problema}
 
 Algoritmo é o conceito mais importante na ciência da computação. A criação deles é essencial para todo tipo de solução de problema, automação, análise e captura de dados, comunicação e quase tudo relacionado com computação.
@@ -19,7 +25,7 @@ Neste trabalho será provado, através do PVS, o correto funcionamento do Heapso
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Explicação das técnicas de solução}
 
-É importante notar que o PVS implementa lógica de sequente de Gentzen dentro de um ambiente de prova iterativo de forma indireta através de comandos de prova, notando que muitos desses comandos  executam de forma automática as regras do sequente. São utilizadas também induções estruturais e matemáticas em muitas das provas.
+É importante notar que o PVS implementa lógica de sequente de Gentzen \cite{pvsbook} dentro de um ambiente de prova iterativo de forma indireta através de comandos de prova, notando que muitos desses comandos  executam de forma automática algumas das regras do sequente. São utilizadas também induções estruturais e matemáticas em muitas das provas.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +33,7 @@ Neste trabalho será provado, através do PVS, o correto funcionamento do Heapso
 
 \section{Heapsort}
 
-O algoritmo heapsort é um algoritmo de ordenação que usa árvores binárias em heap para recursivamente ordenar items de uma lista. Portanto há dois passos no algoritmo:
+O algoritmo heapsort é um algoritmo de ordenação que usa árvores binárias em heap para recursivamente ordenar items de uma lista\cite[part II, c6]{introtoalgo}. Portanto há dois passos no algoritmo:
 
 \begin{enumerate}
     \item Heapify: Transformar a lista recebida em uma arvore binária e então criar um heap a partir disso;
@@ -109,3 +115,9 @@ A prova de \textit{heapsort\_works} utiliza vários lemmas de ambas fontes e pri
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusões}
+
+Este projeto sumariza a capacidade da computação de auxiliar demonstrações de prova e até mesmo de resolver problemas que não poderiam ser resolvidos de outra forma. Demostra também enorme vantagem em limitar quantidade de erros que poderiam ter sido introduzidos na prova, e principalmente erros na construção do algoritmo.
+
+Este método também pode provar útil para descobrimento de modificações que aumentam o desempenho no algoritmo, além da capacidade de poder prová-lo matematicamente.
+
+Lógica é essencial em computação e ter métodos formais de descrever e determinar resultados antes do tempo é uma vantagem que cientistas, organizações e empresas podem utilizar para tornar programas e sistemas mais confiáves.

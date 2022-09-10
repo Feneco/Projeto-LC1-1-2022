@@ -188,7 +188,7 @@
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
-% \pretextual
+\pretextual
 
 % ---
 % Capa
@@ -199,7 +199,7 @@
 % ---
 % Folha de rosto
 % ---
-% \imprimirfolhaderosto
+\imprimirfolhaderosto
 % ---
 
 % ---
@@ -208,12 +208,14 @@
 %     folha ou página distinta após a folha de rosto.''
 % ---
 
+
+
 % ---
 % inserir o sumario
 % ---
-% \pdfbookmark[0]{\contentsname}{toc}
-% \tableofcontents*
-% \cleardoublepage
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
 % ---
 
 
@@ -235,7 +237,7 @@
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{bibliografia}
+\bibliography{projeto}
 
 % ----------------------------------------------------------
 % Glossário
@@ -252,14 +254,14 @@
 % ---
 % Inicia os apêndices
 % ---
-\begin{apendicesenv}
+%\begin{apendicesenv}
 
 % Imprime uma página indicando o início dos apêndices
-\partapendices
+%\partapendices
 
-\lipsum[55-57]
+%\lipsum[55-57]
 
-\end{apendicesenv}
+%\end{apendicesenv}
 % ---
 
 
@@ -270,12 +272,12 @@
 % ---
 % Inicia os anexos
 % ---
-\begin{anexosenv}
+%\begin{anexosenv}
 
 % Imprime uma página indicando o início dos anexos
-\partanexos
+%\partanexos
 
-\end{anexosenv}
+%\end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
